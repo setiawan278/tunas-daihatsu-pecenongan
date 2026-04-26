@@ -816,7 +816,7 @@ function openModal(id) {
       `<div class="spec-box"><div class="spec-label">${k}</div><div class="spec-val">${v}</div></div>`
     ).join('');
   const msg = encodeURIComponent(`Halo, saya tertarik dengan *${m.nama}* (${m.varian}) seharga ${m.harga}. Mohon info lebih lanjut.`);
-  document.getElementById('btnWaModal').onclick = () => window.open(`https://wa.me/6289623329862${nomorWA}?text=${msg}`, '_blank');
+  document.getElementById('btnWaModal').onclick = () => window.open(`https://wa.me/${nomorWA}?text=${msg}`, '_blank');
   document.getElementById('modalOverlay').classList.add('open');
 }
 
