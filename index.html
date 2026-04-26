@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tunas Daihatsu Pecenongan — Dealer Resmi Daihatsu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #D0021B;
+      --red-dark:  #A80016;
+      --red-bg:    #C0001A;
+      --navy:      #1A1A2E;
+      --silver:    #C0C0C0;
+      --blue-btn:  #1565C0;
+      --pink-btn:  #E91E8C;
+      --dark:      #1C1C1C;
+      --text:      #333333;
+      --light-bg:  #F5F5F5;
+      --white:     #FFFFFF;
+      --border:    #DDDDDD;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--red);
+      padding: 11px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-contact { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .top-item {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--white); font-size: 14px; font-weight: 600;
+      text-decoration: none;
+    }
+    .top-item svg { width: 16px; height: 16px; fill: white; flex-shrink: 0; }
+    .top-right { color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600; letter-spacing: 1px; }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--white);
+      padding: 14px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { display: flex; flex-direction: column; text-decoration: none; }
+    .logo-main {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px; font-weight: 900; letter-spacing: 1px; line-height: 1.1;
+    }
+    .logo-main .dai   { color: var(--navy); }
+    .logo-main .hatsu { color: var(--red); }
+    .logo-main .motors { color: var(--navy); }
+    .logo-sub {
+      font-size: 10px; font-weight: 600; letter-spacing: 2px;
+      color: var(--red); margin-top: 2px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none; color: #444;
+      padding: 10px 16px; border-radius: 4px;
+      transition: all 0.2s; letter-spacing: 0.3px;
+    }
+    .nav-links a:hover { color: var(--white); background: var(--red); }
+    .nav-links a.active { background: var(--red); color: var(--white); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: " ▾"; font-size: 10px; }
+    .dropdown-menu {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: white; border: 1px solid var(--border);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      border-radius: 4px; min-width: 180px; z-index: 200;
+    }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block; padding: 10px 18px;
+      font-size: 13px; color: var(--text);
+      text-decoration: none; border-bottom: 1px solid #f5f5f5;
+    }
+    .dropdown-menu a:hover { background: #fff0f0; color: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 500px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; background: #111;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)),
+        url('rock.jpg') center/cover no-repeat;
+    }
+    .hero-content { position: relative; z-index: 1; padding: 80px 24px; }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px, 4vw, 42px); font-weight: 900;
+      color: var(--white); margin-bottom: 14px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .hero-title span { color: #FF6B6B; }
+    .hero-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(11px, 1.5vw, 14px); font-weight: 700;
+      letter-spacing: 3px; color: var(--white);
+      text-transform: uppercase; opacity: 0.9;
+    }
+    .hero-btns { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: var(--red); color: white;
+      padding: 13px 30px; border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-hero-primary:hover { background: var(--red-dark); }
+    .btn-hero-outline {
+      background: transparent; color: white;
+      border: 2px solid rgba(255,255,255,0.7);
+      padding: 13px 30px; border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+    /* ── WELCOME ── */
+    .welcome-section {
+      padding: 70px 48px; text-align: center;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .welcome-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px; font-weight: 700; margin-bottom: 16px;
+    }
+    .welcome-eyebrow span { color: var(--red); }
+    .welcome-headline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(22px, 3.5vw, 34px); font-weight: 900;
+      color: var(--dark); margin-bottom: 18px;
+    }
+    .welcome-bold {
+      font-size: 14px; font-weight: 700; color: var(--dark);
+      margin-bottom: 20px; line-height: 1.6;
+    }
+    .welcome-text {
+      font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 16px;
+    }
+    .welcome-text strong { background: #FFFF00; font-weight: 700; }
+    .checklist { text-align: left; display: inline-block; margin: 16px 0; }
+    .checklist li {
+      list-style: none; padding: 5px 0;
+      font-size: 14px; color: #444;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .check-icon { color: #D0021B; font-size: 18px; font-weight: 700; }
+
+    /* ── CATALOG SECTION ── */
+    .catalog-section {
+      background: var(--light-bg);
+      padding: 60px 48px 80px; text-align: center;
+    }
+    .catalog-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(17px, 2.5vw, 24px); font-weight: 800;
+      color: var(--dark); margin-bottom: 32px;
+    }
+    .catalog-title span { color: var(--red); }
+
+    /* Filter */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+      cursor: pointer; border: 2px solid var(--border);
+      background: transparent; color: #666;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--red); border-color: var(--red); color: white;
+    }
+
+    /* Car Grid */
+    .car-grid {
+      display: flex; justify-content: center; gap: 28px;
+      flex-wrap: wrap; max-width: 1150px; margin: 0 auto;
+    }
+    .car-card {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 14px; width: 200px;
+    }
+    .car-img-wrap {
+      width: 164px; height: 164px; border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--white);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background: #e8e8e8;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .car-card:hover .car-img-wrap {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(208,2,27,0.25);
+    }
+    .car-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .car-img-placeholder {
+      width: 100%; height: 100%;
+      background: #ddd;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 6px; color: #999; font-size: 11px;
+      letter-spacing: 1px; text-align: center; padding: 10px;
+    }
+    .car-img-placeholder svg { width: 36px; height: 36px; opacity: 0.4; }
+    .badge-new-wrap { position: relative; }
+    .badge-new {
+      position: absolute; top: 4px; right: 4px;
+      background: #FFD700; color: #000;
+      font-size: 9px; font-weight: 800;
+      padding: 3px 8px; border-radius: 3px;
+      letter-spacing: 1px;
+    }
+    .car-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px; font-weight: 900;
+      color: var(--dark); text-align: center; letter-spacing: 0.3px;
+    }
+    .car-price-label { font-size: 10px; color: #888; letter-spacing: 1px; margin-top: -8px; }
+    .car-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; font-weight: 800; color: var(--red); text-align: center;
+    }
+    .btn-more {
+      background: var(--blue-btn); color: white; border: none;
+      padding: 9px 22px; border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-more:hover { background: #0D47A1; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--navy);
+      padding: 48px; display: flex;
+      justify-content: center; gap: 64px; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 42px; font-weight: 900; color: var(--red); line-height: 1;
+    }
+    .stat-num span { color: #FFD700; }
+    .stat-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-top: 6px;
+    }
+
+    /* ── WHY SECTION ── */
+    .why-section {
+      padding: 70px 48px; background: white;
+    }
+    .why-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(18px, 2.5vw, 26px); font-weight: 800;
+      color: var(--dark); text-align: center; margin-bottom: 48px;
+    }
+    .why-title span { color: var(--red); }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0; max-width: 1000px; margin: 0 auto;
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    }
+    .why-item {
+      padding: 36px 28px; border-right: 1px solid var(--border);
+      text-align: center; transition: background 0.2s;
+    }
+    .why-item:last-child { border-right: none; }
+    .why-item:hover { background: #fff5f5; }
+    .why-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(208,2,27,0.08);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .why-icon svg { width: 26px; height: 26px; stroke: var(--red); fill: none; stroke-width: 1.5; }
+    .why-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 8px;
+    }
+    .why-desc { font-size: 13px; color: #666; line-height: 1.6; }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      padding: 64px 48px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 40px; flex-wrap: wrap;
+    }
+    .cta-left { flex: 1; min-width: 280px; }
+    .cta-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(18px, 3vw, 28px); font-weight: 900;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .cta-text { font-size: 14px; color: rgba(255,255,255,0.92); line-height: 1.7; margin-bottom: 10px; }
+    .btn-contact {
+      display: inline-block; background: var(--pink-btn); color: white;
+      padding: 14px 32px; border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; margin-top: 20px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-contact:hover { background: #C2185B; transform: translateY(-2px); }
+    .cta-right { flex-shrink: 0; width: 340px; max-width: 100%; }
+    .cta-img {
+      width: 100%; border-radius: 8px;
+      overflow: hidden; background: #8b0000;
+      min-height: 200px; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .cta-img img { width: 100%; display: block; border-radius: 8px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); color: rgba(255,255,255,0.85); }
+    .footer-tagline {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 28px 48px; text-align: center;
+      font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.8);
+    }
+    .footer-tagline span { color: #FFD54F; }
+    .footer-cols {
+      display: grid; grid-template-columns: 1fr 1.4fr 1.4fr;
+      gap: 40px; padding: 48px 48px 40px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .footer-col-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li {
+      padding: 4px 0; font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .footer-col ul li::before { content: "›"; color: var(--red); font-size: 16px; font-weight: 700; }
+    .footer-contact-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 12px; font-size: 13px;
+      color: rgba(255,255,255,0.75); line-height: 1.5;
+    }
+    .footer-contact-item svg { width: 15px; height: 15px; fill: var(--red); flex-shrink: 0; margin-top: 2px; }
+    .footer-map { margin-top: 14px; border-radius: 6px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); }
+    .footer-map iframe { width: 100%; height: 150px; border: none; display: block; }
+    .footer-showroom li::before { display: none !important; }
+    .footer-showroom li {
+      padding: 5px 0 !important; font-size: 13px !important;
+      color: rgba(255,255,255,0.7) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 18px 48px; text-align: center;
+      font-size: 13px; color: rgba(255,255,255,0.45);
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: white; border-radius: 16px;
+      max-width: 600px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      transform: translateY(20px); transition: transform 0.3s;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-img { height: 240px; overflow: hidden; border-radius: 16px 16px 0 0; background: #eee; }
+    .modal-img img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-body { padding: 28px; }
+    .modal-name { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: var(--dark); margin-bottom: 4px; }
+    .modal-varian { font-size: 13px; color: #888; margin-bottom: 14px; }
+    .modal-price-big { font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 900; color: var(--red); margin-bottom: 16px; }
+    .modal-desc { font-size: 14px; color: #555; line-height: 1.75; margin-bottom: 22px; }
+    .modal-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+    .spec-box {
+      background: #f7f7f7; border-radius: 8px; padding: 12px 14px;
+      border: 1px solid #eee;
+    }
+    .spec-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 4px; }
+    .spec-val { font-size: 15px; font-weight: 700; color: var(--dark); }
+    .modal-actions { display: flex; gap: 10px; }
+    .btn-close-modal {
+      background: #f0f0f0; border: none; color: #555;
+      padding: 12px 22px; border-radius: 6px;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-close-modal:hover { background: #e0e0e0; }
+    .btn-wa-modal {
+      flex: 1; background: #25D366; color: white; border: none;
+      padding: 12px 22px; border-radius: 6px;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-wa-modal:hover { background: #1DA855; }
+    .btn-wa-modal svg { width: 18px; height: 18px; fill: white; }
+
+    /* ── WA FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 56px; height: 56px; background: #25D366;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      text-decoration: none; animation: wa-pulse 2.5s infinite; transition: transform 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.12); }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+    @keyframes wa-pulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+      50%      { box-shadow: 0 4px 32px rgba(37,211,102,0.85); }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar, nav, .welcome-section, .catalog-section, .why-section,
+      .stats-strip, .contact-cta, .footer-cols,
+      .footer-tagline, .footer-bottom { padding-left: 20px; padding-right: 20px; }
+      .footer-cols { grid-template-columns: 1fr; }
+      .nav-links { gap: 0; flex-wrap: wrap; }
+      .nav-links a { font-size: 11px; padding: 8px 10px; }
+      .contact-cta { flex-direction: column; }
+      .cta-right { width: 100%; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .why-item { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-contact">
+    <a href="tel:089623329862" class="top-item">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      0896-2332-9862
+    </a>
+    <a href="mailto:ciptaprobosetiawan@gmail.com" class="top-item">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      ciptaprobosetiawan@gmail.com
+    </a>
+  </div>
+  <div class="top-right">🚗 DEALER RESMI DAIHATSU</div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-main">
+      <span class="dai">DAI</span><span class="hatsu">HATSU </span><span class="motors">CAR</span>
+    </div>
+    <div class="logo-sub">SALES &bull; SERVICE &bull; SPARE PARTS</div>
+  </a>
+  <div class="nav-links">
+    <a href="#" class="active">Home</a>
+    <div class="nav-dropdown">
+      <a href="#catalog">Katalog</a>
+      <div class="dropdown-menu">
+        <a href="#catalog">MPV</a>
+        <a href="#catalog">SUV</a>
+        <a href="#catalog">Hatchback</a>
+        <a href="#catalog">Pick Up</a>
+      </div>
+    </div>
+    <a href="#about">Tentang Kami</a>
+    <a href="#career">Karir</a>
+    <a href="#contact">Kontak</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Welcome to <span>TUNAS DAIHATSU PECENONGAN</span></h1>
+    <p class="hero-sub">Mobil Terbaik Untuk Keluarga Indonesia</p>
+    <div class="hero-btns">
+      <a href="#catalog" class="btn-hero-primary">Lihat Katalog</a>
+      <a href="#contact" class="btn-hero-outline">Test Drive Gratis</a>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME -->
+<section class="welcome-section" id="about">
+  <p class="welcome-eyebrow">Selamat Datang Di <span>TUNAS DAIHATSU PECENONGAN</span></p>
+  <h2 class="welcome-headline">Rasakan Kebahagiaan Berkendara Tanpa Repot.</h2>
+  <p class="welcome-bold">Kami Adalah Dealer Resmi Daihatsu Dengan Pengalaman Lebih Dari 15 Tahun Melayani Pelanggan Di Seluruh Indonesia.</p>
+  <p class="welcome-text">
+    TUNAS DAIHATSU PECENONGAN bergerak di bidang <strong>penjualan dan layanan kendaraan Daihatsu</strong>,
+    menyediakan solusi mobilitas lengkap mulai dari pembelian unit baru, layanan purna jual, hingga
+    ketersediaan suku cadang asli untuk berbagai kalangan masyarakat Indonesia, dengan fokus pada
+    kemudahan, kenyamanan, dan kepuasan pelanggan.
+  </p>
+  <p class="welcome-text">
+    Pendekatan Kami Adalah Memberikan Layanan Yang Cepat Dan Ramah Menggunakan Standar Pelayanan
+    Tertinggi Yang Terbukti Meningkatkan Kepuasan Pelanggan, Mempermudah Proses Pembelian Dan
+    Melindungi Investasi Kendaraan Pelanggan Kami..
+  </p>
+  <ul class="checklist">
+    <li><span class="check-icon">✔✔</span> Garansi resmi pabrik 3 tahun / 100.000 km.</li>
+    <li><span class="check-icon">✔✔</span> Kredit mudah DP mulai 10%, tenor hingga 60 bulan.</li>
+    <li><span class="check-icon">✔✔</span> Layanan servis berkala oleh teknisi bersertifikat.</li>
+  </ul>
+</section>
+
+<!-- CATALOG -->
+<section class="catalog-section" id="catalog">
+  <h2 class="catalog-title">Apa Yang Dapat <span>TUNAS DAIHATSU PECENONGAN</span> Tawarkan Kepada Anda?</h2>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCars('semua',this)">Semua</button>
+    <button class="filter-btn" onclick="filterCars('mpv',this)">MPV</button>
+    <button class="filter-btn" onclick="filterCars('suv',this)">SUV</button>
+    <button class="filter-btn" onclick="filterCars('hatchback',this)">Hatchback</button>
+    <button class="filter-btn" onclick="filterCars('pickup',this)">Pick Up</button>
+  </div>
+  <div class="car-grid" id="carGrid"></div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">50<span>+</span></div>
+    <div class="stat-label">Unit Tersedia</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">10<span>K+</span></div>
+    <div class="stat-label">Pelanggan Puas</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">15<span>+</span></div>
+    <div class="stat-label">Tahun Pengalaman</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5<span></span></div>
+    <div class="stat-label">Cabang Showroom</div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="why-section">
+  <h2 class="why-title">Mengapa Memilih <span>TUNAS DAIHATSU PECENONGAN</span>?</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="why-name">Garansi Resmi</div>
+      <div class="why-desc">Garansi resmi pabrik 3 tahun atau 100.000 km untuk setiap unit baru.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="why-name">Kredit Mudah</div>
+      <div class="why-desc">DP ringan mulai 10% dengan tenor hingga 60 bulan, proses cepat & transparan.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div class="why-name">Servis Bergaransi</div>
+      <div class="why-desc">Teknisi bersertifikat Daihatsu dengan suku cadang asli dan harga transparan.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="why-name">Pengiriman Cepat</div>
+      <div class="why-desc">Unit siap terima dalam 1–7 hari kerja lengkap STNK & BPKB ke seluruh wilayah.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta" id="contact">
+  <div class="cta-left">
+    <h2 class="cta-title">HUBUNGI KAMI SEKARANG</h2>
+    <p class="cta-text">
+      Anda memiliki pertanyaan, menginginkan informasi lebih lanjut, atau dapatkah kami memberikan
+      penawaran harga terbaik? Jangan ragu untuk menghubungi kami.
+    </p>
+    <p class="cta-text">
+      Tim sales kami siap membantu Anda menemukan mobil Daihatsu yang tepat sesuai kebutuhan
+      dan anggaran Anda dengan proses yang mudah dan menyenangkan.
+    </p>
+    <a href="https://wa.me/6289623329862" target="_blank" class="btn-contact">CONTACT US ›</a>
+  </div>
+  <div class="cta-right">
+    <div class="cta-img">
+      <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80" alt="Tim Kami" />
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-tagline">
+    <span>🚗</span> TUNAS DAIHATSU PECENONGAN — Dealer resmi Daihatsu yang berkantor pusat di Jakarta —
+    Mitra otomotif terpercaya yang menghubungkan keluarga Indonesia dengan kendaraan impian mereka.
+  </div>
+  <div class="footer-cols">
+    <!-- Col 1: Layanan -->
+    <div class="footer-col">
+      <div class="footer-col-title">Layanan</div>
+      <ul>
+        <li>Penjualan Unit Baru</li>
+        <li>Trade In / Tukar Tambah</li>
+        <li>Kredit & Leasing</li>
+        <li>Servis Berkala</li>
+        <li>Suku Cadang Asli</li>
+        <li>Test Drive</li>
+      </ul>
+    </div>
+    <!-- Col 2: Kontak -->
+    <div class="footer-col">
+      <div class="footer-col-title">Kontak Kami</div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        0896-2332-9862
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        ciptaprobosetiawan@gmail.com
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        TUNAS DAIHATSU PECENONGAN, JL. PECENONGAN NO.80, JAKARTA PUSAT
+      </div>
+      <div class="footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6!2d106.87!3d-6.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDaihatsu!5e0!3m2!1sid!2sid!4v1" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <!-- Col 3: Showroom -->
+    <div class="footer-col">
+      <div class="footer-col-title">Lokasi Showroom</div>
+      <ul class="footer-showroom">
+        <li>🏢 TUNAS DAIHATSU PECENONGAN, JL. PECENONGAN NO.80, KB. KLP,. KECAMATAN GAMBIR,KOTA JAKARTA PUSAT,DAERAH KHUSUS IBU KOTA JAKARTA 10120</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">Copyright © 2026 | TUNAS DAIHATSU PECENONGAN — Dealer Resmi Daihatsu</div>
+</footer>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/6289623329862" target="_blank" title="Chat via WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-body">
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-varian" id="modalVarian"></div>
+      <div class="modal-price-big" id="modalPrice"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <div class="modal-actions">
+        <button class="btn-close-modal" onclick="document.getElementById('modalOverlay').classList.remove('open')">Tutup</button>
+        <button class="btn-wa-modal" id="btnWaModal">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Tanya via WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════
+// DATA MOBIL — Edit di sini untuk kustomisasi
+// ════════════════════════════════════════════
+const mobilData = [
+  {
+    id: 1, nama: "Daihatsu Ayla", varian: "1.0 D MT / 1.2 R AT",
+    kategori: "hatchback", harga: "Rp 115.000.000", isNew: false,
+    src: "ayla.jpg", 
+    deskripsi: "Isi deskripsi Ayla di sini. Mobil city car terlaris dengan konsumsi BBM irit dan desain modern.",
+    spesifikasi: { Mesin: "1.0L / 1.2L", Transmisi: "MT / AT", Kapasitas: "5 Penumpang", BBM: "Bensin" }
+  },
+  {
+    id: 2, nama: "Daihatsu Sigra", varian: "1.0 D MT / 1.2 R AT",
+    kategori: "mpv", harga: "Rp 145.000.000", isNew: false,
+    src: "sigra.jpg",
+    deskripsi: "Isi deskripsi Sigra di sini. LCGC 7-seater yang sangat populer, ideal untuk keluarga.",
+    spesifikasi: { Mesin: "1.0L / 1.2L", Transmisi: "MT / AT", Kapasitas: "7 Penumpang", BBM: "Bensin" }
+  },
+  {
+    id: 3, nama: "Daihatsu Rocky", varian: "1.0 Turbo X AT",
+    kategori: "suv", harga: "Rp 258.000.000", isNew: true,
+    src: "rock.jpg",
+    deskripsi: "Isi deskripsi Rocky di sini. SUV premium kompak dengan mesin turbo bertenaga dan fitur canggih.",
+    spesifikasi: { Mesin: "1.0L Turbo", Transmisi: "CVT", Kapasitas: "5 Penumpang", BBM: "Bensin" }
+  },
+  {
+    id: 4, nama: "Daihatsu Xenia", varian: "1.3 X MT / R AT",
+    kategori: "mpv", harga: "Rp 228.000.000", isNew: false,
+    src: "xenia.jpg",
+    deskripsi: "Isi deskripsi Xenia di sini. MPV keluarga dengan desain terbaru yang lebih stylish dan kabin luas.",
+    spesifikasi: { Mesin: "1.3L", Transmisi: "MT / CVT", Kapasitas: "7 Penumpang", BBM: "Bensin" }
+  },
+  {
+    id: 5, nama: "Daihatsu Terios", varian: "1.5 X AT",
+    kategori: "suv", harga: "Rp 265.000.000", isNew: false,
+    src: "teri.jpg",
+    deskripsi: "Isi deskripsi Terios di sini. SUV tangguh 7-seater dengan ground clearance tinggi untuk segala medan.",
+    spesifikasi: { Mesin: "1.5L", Transmisi: "MT / AT", Kapasitas: "7 Penumpang", BBM: "Bensin" }
+  },
+  {
+    id: 6, nama: "Daihatsu Gran Max", varian: "Pick Up 1.3 M/T",
+    kategori: "pickup", harga: "Rp 195.000.000", isNew: false,
+    src: "gran.jpg",
+    deskripsi: "Isi deskripsi Gran Max di sini. Pick up niaga andalan bisnis dengan daya angkut besar dan handal.",
+    spesifikasi: { Mesin: "1.3L", Transmisi: "MT", Kapasitas: "2 Penumpang", BBM: "Bensin" }
+  }
+];
+
+const nomorWA = "6289623329862"; // ← Ganti nomor WhatsApp dealer
+
+// ── Render ──
+function renderCards(filter = 'semua') {
+  const grid = document.getElementById('carGrid');
+  grid.innerHTML = '';
+  const list = filter === 'semua' ? mobilData : mobilData.filter(m => m.kategori === filter);
+  list.forEach(m => {
+    const el = document.createElement('div');
+    el.className = 'car-card';
+    el.innerHTML = `
+      <div class="badge-new-wrap" style="position:relative;display:inline-block;">
+        <div class="car-img-wrap">
+          ${m.src
+            ? `<img src="${m.src}" alt="${m.nama}" loading="lazy"/>`
+            : `<div class="car-img-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                  <rect x="1" y="3" width="15" height="13" rx="2"/>
+                  <path d="m16 8 3 3v5h-2m-7 0H4m5 0a2 2 0 01-4 0m4 0a2 2 0 00-4 0"/>
+                  <circle cx="17.5" cy="18.5" r="1.5"/>
+                </svg>
+                <span>Tambah Gambar</span>
+              </div>`}
+        </div>
+        ${m.isNew ? '<div class="badge-new">NEW</div>' : ''}
+      </div>
+      <div class="car-name">${m.nama}</div>
+      <div class="car-price-label">Mulai dari</div>
+      <div class="car-price">${m.harga} OTR</div>
+      <a href="javascript:void(0)" class="btn-more" onclick="openModal(${m.id})">MORE INFO</a>
+    `;
+    grid.appendChild(el);
+  });
+}
+
+function filterCars(k, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards(k);
+}
+
+function openModal(id) {
+  const m = mobilData.find(x => x.id === id);
+  if (!m) return;
+  document.getElementById('modalName').textContent = m.nama;
+  document.getElementById('modalVarian').textContent = m.varian;
+  document.getElementById('modalPrice').textContent = m.harga + ' OTR';
+  document.getElementById('modalDesc').textContent = m.deskripsi;
+  document.getElementById('modalImg').innerHTML = m.src
+    ? `<img src="${m.src}" alt="${m.nama}"/>`
+    : `<div style="height:240px;background:#eee;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:13px;letter-spacing:1px;">TAMBAHKAN GAMBAR</div>`;
+  document.getElementById('modalSpecs').innerHTML =
+    Object.entries(m.spesifikasi).map(([k,v]) =>
+      `<div class="spec-box"><div class="spec-label">${k}</div><div class="spec-val">${v}</div></div>`
+    ).join('');
+  const msg = encodeURIComponent(`Halo, saya tertarik dengan *${m.nama}* (${m.varian}) seharga ${m.harga}. Mohon info lebih lanjut.`);
+  document.getElementById('btnWaModal').onclick = () => window.open(`https://wa.me/6289623329862${nomorWA}?text=${msg}`, '_blank');
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay'))
+    document.getElementById('modalOverlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('modalOverlay').classList.remove('open');
+});
+
+renderCards();
+</script>
+</body>
+</html>
